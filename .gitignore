@@ -1,7 +1,2 @@
-.idea/
-
-.python-version
-.venv/
+.pythonlibs/
 *.pyc
-
-Pipfile.lock
