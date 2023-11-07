@@ -6,7 +6,9 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.11"
-pytest = "^7.4.3"
+flask = "*"
+requests = "*"
+pytest = "*"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
