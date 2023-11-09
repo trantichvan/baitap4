@@ -12,7 +12,7 @@ def github_request(url):
   """
 
   # load_dotenv()
-  GITHUB_API_KEY = os.environ.get('GITHUB_API_KEY')
+  GITHUB_API_KEY = os.environ.get('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')
 
   header = {
     #TODO below header NOT effective ie it seems github now allow to call endpoint without a github api key

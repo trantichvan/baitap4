@@ -14,26 +14,41 @@
 
 from flask import Flask, jsonify
 import os
+import requests
 #
 from src.helper import github_request
 
 
 app = Flask(__name__)
+github_repo = "pyenv/pyenv"
+github_api_url = f"https://api.github.com/repos/{github_repo}"
 
-
+# Hàm lấy danh sách tất cả các phiên bản release
+def get_all_releases():
+    response = requests.get(f"{github_api_url}/releases")
+    if response.status_code == 200:
+        releases = response.json()
+        return releases
+    return []
 @app.route('/')
 def index():
-  pass#todo
-
+  return jsonify({})
 
 @app.route('/release')
 def release():
-  pass#todo
+  releases = get_all_releases()
+  if releases:
+      return jsonify(releases)
+  return jsonify({}), 404
 
 
 @app.route('/most_3_recent/release')
 def most_3_recent__release():
-  pass#todo
+  releases = get_all_releases()
+  if releases:
+      most_recent_releases = sorted(releases, key=lambda x: x['created_at'], reverse=True)[:3]
+      return jsonify(most_recent_releases)
+  return jsonify({}), 404
 
 
 if __name__=='__main__':
